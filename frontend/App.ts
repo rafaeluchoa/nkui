@@ -12,7 +12,7 @@ let vm = new ViewManager('.nk-app', ui);
 let name = ui.field().label('Nome');
 let content = ui.vertical()
     .add(name)
-    .add(ui.button().valued('Click').click(() => {
+    .add(ui.button().text('Click').click(() => {
         name.valued('Hello ' + name.value());
     }))
     ;

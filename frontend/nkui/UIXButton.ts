@@ -25,15 +25,4 @@ export class UIXButton extends UIComponent<HTMLButtonElement> {
         return this;
     }
 
-    valued(v: string) {
-        this.addChange((e) => {
-            e.textContent = v;
-        });
-        return this;
-    }
-
-    value() : string {
-        return this._element.textContent;
-    }
-
 }
