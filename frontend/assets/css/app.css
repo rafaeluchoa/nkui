@@ -1,0 +1,11 @@
+.header {
+	color: #F10021;
+	font-size: 18px;
+	padding: 15px 15px;
+}
+
+.footer {
+	text-align: right;
+	padding: 10px;
+	color: #888;
+}

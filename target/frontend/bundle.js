@@ -11,7 +11,7 @@ var vm = new ViewManager_1.ViewManager('.nk-app', ui);
 var name = ui.field().label('Nome');
 var content = ui.vertical()
     .add(name)
-    .add(ui.button().valued('Click').click(function () {
+    .add(ui.button().text('Click').click(function () {
     name.valued('Hello ' + name.value());
 }));
 vm.open(function (onClose) { return content; });
@@ -243,15 +243,6 @@ var UIXButton = /** @class */ (function (_super) {
             e.setAttribute("data-nk-btn", "link");
         });
         return this;
-    };
-    UIXButton.prototype.valued = function (v) {
-        this.addChange(function (e) {
-            e.textContent = v;
-        });
-        return this;
-    };
-    UIXButton.prototype.value = function () {
-        return this._element.textContent;
     };
     return UIXButton;
 }(UIComponent_1.UIComponent));

@@ -1,6 +1,6 @@
 import { Updater } from "./Updater";
 
-export class UIComponent<T extends HTMLElement> {
+export class UIComponent<T extends HTMLElement = HTMLElement> {
 
     _up: Updater;
     _element: T;
