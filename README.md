@@ -19,6 +19,8 @@ return ui.item().add(ui.vertical()
 ;
 ```
 
+![sandbox image](docs/sandbox-login.png?raw=true "Sandbox Login")
+
 ## install
 
 ```
