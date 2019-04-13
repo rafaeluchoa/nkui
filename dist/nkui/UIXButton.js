@@ -14,6 +14,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var UIComponent_1 = require("./UIComponent");
+/**
+ * Specialized component button.
+ */
 var UIXButton = /** @class */ (function (_super) {
     __extends(UIXButton, _super);
     function UIXButton(up) {
@@ -23,12 +26,18 @@ var UIXButton = /** @class */ (function (_super) {
         });
         return _this;
     }
+    /**
+     * Primary action for user.
+     */
     UIXButton.prototype.primary = function () {
         this.addChange(function (e) {
             e.setAttribute("data-nk-btn", "primary");
         });
         return this;
     };
+    /**
+     * Secundary action for user
+     */
     UIXButton.prototype.link = function () {
         this.addChange(function (e) {
             e.setAttribute("data-nk-btn", "link");

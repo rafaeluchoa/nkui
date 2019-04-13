@@ -1,6 +1,9 @@
 import { UIComponent } from "./UIComponent";
 import { UI } from "./UI";
 
+/**
+ * A label, input and span for messages.
+ */
 export class UIXField extends UIComponent<HTMLDivElement> {
 
     _label: UIComponent<HTMLLabelElement>;
@@ -21,11 +24,19 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         super.add(this._span);
     }
 
+    /**
+     * Name of the field.
+     * @param value 
+     */
     label(value: string) {
         this._label.text(value);
         return this;
     }
 
+    /**
+     * Placeholder of th field.
+     * @param value 
+     */
     hint(value: string) {
         this._input.addChange((e) => {
             e.placeholder = value;
@@ -33,6 +44,9 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /**
+     * info message.
+     */
     msg(value: string) {
         this.addChange((e) => {
             e.classList.add('nk-fld-m');
@@ -43,6 +57,9 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /** 
+     * invalid input
+     */
     invalid(value: string) {
         if(!value || value == '') {
             this.addChange((e) => {
@@ -63,6 +80,10 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /**
+     * changes the value of the input.
+     * @param v value to change.
+     */
     valued(v: string) {
         this._input.addChange((e) => {
             e.value = v;
@@ -70,10 +91,16 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /**
+     * returns the value of input.
+     */
     value() : string {
         return this._input._element.value;
     }
 
+    /**
+     * define the input type for password.
+     */
     password() {
         this._input.addChange((e) => {
             e.type = 'password';
@@ -81,6 +108,10 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /**
+     * Adds event onchange on input.
+     * @param fn action function
+     */
     onChange(fn: (value: string) => void) {
         this.addChange((e) => {
             e.onchange = (event) => {
@@ -90,6 +121,10 @@ export class UIXField extends UIComponent<HTMLDivElement> {
         return this;
     }
 
+    /**
+     * Adds event keydown on input.
+     * @param fn 
+     */
     onKey(fn: (value: string) => void) {
         this.addChange((e) => {
             e.onkeydown = (event) => {

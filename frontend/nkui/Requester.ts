@@ -1,3 +1,6 @@
+/**
+ * Simple XMLHttpRequest requester.
+ */
 export class Requester {
 
     _method: string;
@@ -5,6 +8,11 @@ export class Requester {
     _headers: { [key: string]: string };
     _path: string;
 
+    /**
+     * Configure the Requester
+     * @param method default method used for this Requester.
+     * @param url url base for all requests.
+     */
     constructor(method: string, url: string) {
         this._method = method;
         this._url = url;
@@ -12,16 +20,31 @@ export class Requester {
         this._path = "";
     }
 
+    /**
+     * Define an header attribute for all requests.
+     * @param key header name
+     * @param value header value
+     */
     header(key: string, value: string) {
         this._headers[key] = value;
         return this;
     }
 
+    /**
+     * The resource name for compose the URL.
+     * @param value resource name
+     */
     path(value: string) {
         this._path = value;
         return this;
     }
 
+    /**
+     * Create an request and response as json objects.
+     * @param obj request to send.
+     * @param onResult callback for response.
+     * @param onError callback for errors.
+     */
     json(obj: any, onResult: (data: any) => void, onError?: (error: any) => void) {
         this.header('Content-Type', 'application/json;charset=UTF-8');
         this.header('Accept', 'application/json');
@@ -36,6 +59,12 @@ export class Requester {
         }, onError);
     }
 
+    /**
+     * Write the request to server.
+     * @param body the content to send
+     * @param onResult callback with response
+     * @param onError callback with error
+     */
     write(body: string, onResult: (xhr: XMLHttpRequest) => void, onError?: (error: any) => void) {
         let urlc = this._url + this._path;
         console.log('>>: ' + this._method + ' ' + urlc);

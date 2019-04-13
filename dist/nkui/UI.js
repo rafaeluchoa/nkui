@@ -1,22 +1,36 @@
 "use strict";
 exports.__esModule = true;
 var UIComponent_1 = require("./UIComponent");
+/**
+ * Create the HTML base elements
+ * scheduling the UI changes in batch.
+ */
 var UI = /** @class */ (function () {
+    /**
+     * Initialize the batch changes.
+     */
     function UI() {
-        this.changes = [];
-        this.applyChanges();
+        this._changes = [];
+        this._applyChanges();
     }
+    /**
+     * Adds a ui change on queue.
+     * @param action
+     */
     UI.prototype.addChange = function (action) {
-        this.changes.push(action);
+        this._changes.push(action);
         return this;
     };
-    UI.prototype.applyChanges = function () {
+    /**
+     * Applies the ui change
+     */
+    UI.prototype._applyChanges = function () {
         var _this = this;
-        while (this.changes.length > 0) {
-            this.changes.shift()();
+        while (this._changes.length > 0) {
+            this._changes.shift()();
         }
         window.requestAnimationFrame(function (time) {
-            _this.applyChanges();
+            _this._applyChanges();
         });
         return this;
     };

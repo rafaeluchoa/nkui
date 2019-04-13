@@ -1,25 +1,43 @@
 import { UIComponent } from "./UIComponent";
+import { Updater } from "./Updater";
 
-export class UI {
+/**
+ * Create the HTML base elements 
+ * scheduling the UI changes in batch.
+ */
+export class UI implements Updater {
 
-    changes: any[];
+    /**
+     * List the UI changes (functions) 
+     */
+    _changes: {() : void}[];
 
+    /**
+     * Initialize the batch changes.
+     */
     constructor() {
-        this.changes = [];
-        this.applyChanges();
+        this._changes = [];
+        this._applyChanges();
     }
 
+    /**
+     * Adds a ui change on queue.
+     * @param action 
+     */
     addChange(action: () => void) {
-        this.changes.push(action);
+        this._changes.push(action);
         return this;
     }
 
-    applyChanges() {
-        while (this.changes.length > 0) {
-            this.changes.shift()();
+    /**
+     * Applies the ui change
+     */
+    _applyChanges() {
+        while (this._changes.length > 0) {
+            this._changes.shift()();
         }
         window.requestAnimationFrame((time) => {
-            this.applyChanges();
+            this._applyChanges();
         });
         return this;
     }

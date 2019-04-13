@@ -1,6 +1,9 @@
 import { UIComponent } from "./UIComponent";
 import { Updater } from "./Updater";
 
+/**
+ * Specialized component button.
+ */
 export class UIXButton extends UIComponent<HTMLButtonElement> {
 
     constructor(up: Updater) {
@@ -11,6 +14,9 @@ export class UIXButton extends UIComponent<HTMLButtonElement> {
         });
     }
 
+    /**
+     * Primary action for user.
+     */
     primary() {
         this.addChange((e) => {
             e.setAttribute("data-nk-btn", "primary");
@@ -18,6 +24,9 @@ export class UIXButton extends UIComponent<HTMLButtonElement> {
         return this;
     }
 
+    /**
+     * Secundary action for user
+     */
     link() {
         this.addChange((e) => {
             e.setAttribute("data-nk-btn", "link");

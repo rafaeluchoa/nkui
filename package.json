@@ -16,22 +16,21 @@
   "types": "dist/index.ts",
   "scripts": {
     "build-backend": "tsc -p backend/",
-    "build-frontend": "cpx frontend/assets/** target/frontend && browserify frontend/App.ts -p [ tsify -p frontend/ ] -p [ parcelify -o target/frontend/bundle.css ] -o target/frontend/bundle.js",
-    "build": "cpx frontend/assets/css/nkui.css dist/ && tsc -p frontend/ --outDir dist --declaration"
+    "build-frontend": "cpx frontend/assets/sandbox/index.html target/frontend && browserify frontend/sandbox/App.ts -p [ tsify -p frontend/ ] -p [ parcelify -o target/frontend/bundle.css ] -o target/frontend/bundle.js",
+    "build": "cpx frontend/assets/nkui/** dist/ && tsc -p frontend/ --outDir dist --declaration"
   },
-  "dependencies": {
-    "express": "4.16.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/express": "4.16.1",
     "browserify": "16.2.3",
     "cpx": "1.5.0",
+    "express": "4.16.4",
     "parcelify": "2.2.1",
     "tsify": "4.0.1",
     "typescript": "3.4.2"
   },
   "style": [
-    "frontend/css/styles.css",
-    "frontend/css/app.css"
+    "frontend/assets/nkui/nkui.css",
+    "frontend/assets/sandbox/app.css"
   ]
 }

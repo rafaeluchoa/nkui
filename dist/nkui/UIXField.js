@@ -14,6 +14,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var UIComponent_1 = require("./UIComponent");
+/**
+ * A label, input and span for messages.
+ */
 var UIXField = /** @class */ (function (_super) {
     __extends(UIXField, _super);
     function UIXField(ui) {
@@ -27,16 +30,27 @@ var UIXField = /** @class */ (function (_super) {
         _super.prototype.add.call(_this, _this._span);
         return _this;
     }
+    /**
+     * Name of the field.
+     * @param value
+     */
     UIXField.prototype.label = function (value) {
         this._label.text(value);
         return this;
     };
+    /**
+     * Placeholder of th field.
+     * @param value
+     */
     UIXField.prototype.hint = function (value) {
         this._input.addChange(function (e) {
             e.placeholder = value;
         });
         return this;
     };
+    /**
+     * info message.
+     */
     UIXField.prototype.msg = function (value) {
         this.addChange(function (e) {
             e.classList.add('nk-fld-m');
@@ -46,6 +60,9 @@ var UIXField = /** @class */ (function (_super) {
         });
         return this;
     };
+    /**
+     * invalid input
+     */
     UIXField.prototype.invalid = function (value) {
         if (!value || value == '') {
             this.addChange(function (e) {
@@ -65,21 +82,35 @@ var UIXField = /** @class */ (function (_super) {
         }
         return this;
     };
+    /**
+     * changes the value of the input.
+     * @param v value to change.
+     */
     UIXField.prototype.valued = function (v) {
         this._input.addChange(function (e) {
             e.value = v;
         });
         return this;
     };
+    /**
+     * returns the value of input.
+     */
     UIXField.prototype.value = function () {
         return this._input._element.value;
     };
+    /**
+     * define the input type for password.
+     */
     UIXField.prototype.password = function () {
         this._input.addChange(function (e) {
             e.type = 'password';
         });
         return this;
     };
+    /**
+     * Adds event onchange on input.
+     * @param fn action function
+     */
     UIXField.prototype.onChange = function (fn) {
         var _this = this;
         this.addChange(function (e) {
@@ -89,6 +120,10 @@ var UIXField = /** @class */ (function (_super) {
         });
         return this;
     };
+    /**
+     * Adds event keydown on input.
+     * @param fn
+     */
     UIXField.prototype.onKey = function (fn) {
         var _this = this;
         this.addChange(function (e) {
