@@ -4,7 +4,7 @@ Create complex components using the simple component without performance issues 
 
 ### example
 
-```javascript
+```typescript
 let ui = new UIX();
 
 let username = ui.field().label('Username');
@@ -14,7 +14,7 @@ return ui.item().add(ui.vertical()
     .add(username)
     .add(password)
     .add(ui.button().primary().text('Login').click(() => {
-        this.apiLogin(username, password, onReturn);
+        this.apiLogin(username.value(), password.value());
     })))
 ;
 ```
@@ -22,7 +22,5 @@ return ui.item().add(ui.vertical()
 ## install
 
 ```
-npm install
-
-npm run build
+npm install @naskar/nkui
 ```
